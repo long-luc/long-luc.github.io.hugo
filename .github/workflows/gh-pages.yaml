@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           cache: 'npm'
-        run: npm install
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -26,7 +25,10 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Build
+      - name: Build - npm
+        run: npm install
+
+      - name: Build - hugo
         run: hugo --minify
 
       - name: Deploy
